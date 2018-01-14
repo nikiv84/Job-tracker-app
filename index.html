@@ -10,12 +10,42 @@
     <!--CSS-->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Interview Reports</title>
 </head>
 
 <body>
-    <h1>Interview Reports</h1>
-
+    <div class="indigo darken-4 noshdw">
+        <div class="container">
+            <div class="row">
+                <nav class="indigo darken-4">
+                    <div class="nav-wrapper">
+                        <a href="#" class="brand-logo">Interview Reports</a>
+                        <ul class="right hide-on-med-and-down">
+                            <li>
+                                <a class="waves-effect waves-light btn indigo lighten-5 indigo-text">Candidates</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s6 heading">
+                <h2>Candidates</h2>
+            </div>
+            <form class="col s6 search">
+                <div class="input-field">
+                    <i class="material-icons prefix valign">search</i>
+                    <input id="icon_search" type="text" class="validate">
+                    <label for="icon_search">Search</label>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="app"></div>
 
     <!--JS files-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
