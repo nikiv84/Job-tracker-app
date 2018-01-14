@@ -24,17 +24,21 @@
     i {
         color:  #404040;
     }
+    
     input[type=text] {
         border-bottom-color: #404040;
     }
+
     .input-field .prefix.active {
         color: $primary-color;
     }
+
     input[type=text]:focus {
         color: $primary-color!important;
         border-bottom-color: $primary-color!important;
         box-shadow: 0 1px 0 0 $primary-color!important;
     }
+
     input[type=text]:focus + label {
         color: $primary-color!important;
     }
