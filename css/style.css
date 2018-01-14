@@ -1,3 +1,25 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,700,900");
+body {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 300;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  position: relative; }
+
+.card {
+  transition: all 0.25s cubic-bezier(0, 0.98, 0, 2);
+  transform: scale(0.95); }
+  .card a, .card i {
+    font-size: 0.9rem;
+    vertical-align: middle;
+    line-height: 1; }
+  .card i {
+    padding-bottom: 2px; }
+  .card:hover {
+    cursor: pointer;
+    transform: scale(1.05) rotate3d(1, -1, 0, -20deg); }
+
 .noshdw, .noshdw nav {
   box-shadow: none; }
 
@@ -19,7 +41,31 @@
   color: #1a237e !important;
   border-bottom-color: #1a237e !important;
   box-shadow: 0 1px 0 0 #1a237e !important; }
+.search input[type=text]:valid {
+  color: #1a237e !important;
+  border-bottom-color: #1a237e !important;
+  box-shadow: 0 1px 0 0 #1a237e !important; }
 .search input[type=text]:focus + label {
   color: #1a237e !important; }
+
+.shadow-overlay {
+  z-index: -50;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: .5;
+  background: #e8eaf6; }
+
+#particles {
+  z-index: -100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
 
 /*# sourceMappingURL=style.css.map */
