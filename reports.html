@@ -20,8 +20,9 @@
             <div class="row">
                 <nav class="indigo darken-4">
                     <div class="nav-wrapper">
-                        <a href="#" class="brand-logo">Interview Reports</a>
-                        <ul class="right hide-on-med-and-down">
+                        <a href="index.html" class="brand-logo left">
+                            <img src="img/logo.svg" alt="logo" class="responsive-img m-align">Interview Reports</a>
+                        <ul class="right hide-on-small-only">
                             <li>
                                 <a class="waves-effect waves-light btn indigo lighten-5 indigo-text" href="index.html">Candidates</a>
                             </li>
@@ -31,25 +32,23 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col s6 heading">
-                <h2>Candidates</h2>
-            </div>
-            <form class="col s6 search">
-                <div class="input-field">
-                    <i class="material-icons prefix valign">search</i>
-                    <input id="search" type="text" class="validate">
-                    <label for="search">Search</label>
-                </div>
-            </form>
-        </div>
-    </div>
     <div id="app"></div>
 
+    <!-- Modal Structure -->
+    <div id="report-modal" class="modal">
+        <a href="#!" class="modal-action modal-close right">
+            <i class="material-icons">close</i>
+        </a>
+        <div class="modal-content">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+
     <!--JS files-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script2.js"></script>
 </body>
 
 </html>
