@@ -7,6 +7,7 @@ var errTypes = {
     info: "info"
 }
 
+//ajax request
 function dataRequest(query, method, dataHandler, errorHandler) {
     var url = endpoint + query;
     var request = $.ajax({
@@ -24,6 +25,7 @@ function dataRequest(query, method, dataHandler, errorHandler) {
     })
 }
 
+//date formatting function
 function dateFormatter(dateData) {
     var date = new Date(dateData);
 
@@ -41,6 +43,7 @@ function dateFormatter(dateData) {
     return dd + '.' + mm + '.' + yyyy + '.';
 }
 
+//render error on UI
 function UIerrorHandler(msg, errtype) {
     var warnBtn, warnClass;
     switch (errtype) {
@@ -71,6 +74,7 @@ function UIerrorHandler(msg, errtype) {
     `);
 }
 
+//render candidates on UI
 function renderCandidate(candidate) {
     $("#app").append(`
         <div class="container" id="candidate-data">
@@ -82,21 +86,21 @@ function renderCandidate(candidate) {
                 </div>
                 <div class="col s12 m12 l9 xl8 cand-info">
                     <div class="row">
-                        <div class="col s12 m6 l6">
+                        <div class="col s12 m6 l7 xl6">
                             <small>Name:</small>
                             <h6>${candidate.name}</h6>
                         </div>
-                        <div class="col s12 m6 l6">
+                        <div class="col s12 m6 l5 xl6">
                             <small>Date of birth:</small>
                             <h6>${dateFormatter(candidate.birthday)}</h6>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s12 m6 l6">
+                        <div class="col s12 m6 l7 xl6">
                             <small>Email:</small>
                             <h6>${candidate.email.toLowerCase()}</h6>
                         </div>
-                        <div class="col s12 m6 l6">
+                        <div class="col s12 m6 l5 xl6">
                             <small>Education:</small>
                             <h6>${candidate.education}</h6>
                         </div>
@@ -107,10 +111,12 @@ function renderCandidate(candidate) {
     `);
 }
 
+//Uppercase first letter
 String.prototype.ucFirst = function () {
     return this.charAt(0).toUpperCase() + this.substr(1);
 }
 
+//render modal element with report content
 function renderModal(report) {
     var $modalContainer = $(".modal-content .row");
     $modalContainer.html("");
@@ -136,6 +142,7 @@ function renderModal(report) {
     `);
 }
 
+//render table rows with report data
 function renderReportRows(reports) {
     var $reports = $(reports);
     var output = ``;
@@ -162,6 +169,7 @@ function renderReportRows(reports) {
     return output;
 }
 
+//get data for modal element
 function getModalData(id) {
     state.reports.forEach(function (report) {
         if (report.id == id) {
@@ -170,6 +178,7 @@ function getModalData(id) {
     });
 }
 
+//add event listener to activate modal
 function attachEventListener() {
     var $details = $("a[data-id]");
     $details.each(function (i) {
@@ -180,6 +189,7 @@ function attachEventListener() {
     })
 }
 
+//render reports table
 function renderReports(reports) {
     if (!reports.length) {
         UIerrorHandler("There are no reports for this person yet.", errTypes.info);
@@ -187,24 +197,31 @@ function renderReports(reports) {
     }
     $("#candidate-data").append(`
         <h4>Reports</h4>
-        <table class="striped">
-            <thead>
-            <tr>
-                <th>Company</th>
-                <th>Interview Date</th>
-                <th colspan="2">Status</th>
-            </tr>
-            </thead>
-            <tbody>
-                ${renderReportRows(reports)}
-            </tbody>
-        </table>
+        <div class="row">
+            <table class="striped">
+                <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Interview Date</th>
+                    <th colspan="2">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                    ${renderReportRows(reports)}
+                </tbody>
+            </table>
+        <div class="row">
     `);
     attachEventListener(reports);
 }
 
+//fetch reports data for selected candidate
 function getReports() {
-    var candidateId = (JSON.parse(window.localStorage.getItem("candidate"))).id;
+    if (!state.candidate) {
+        redirectToHome();
+        return;
+    }
+    var candidateId = state.candidate.id;
     dataRequest("reports", "GET", function (reports) {
         var filteredReports = reports.filter(function (report) {
             return report.candidateId === candidateId;
@@ -216,21 +233,30 @@ function getReports() {
     })
 }
 
-function getCandidates() {
+//redirect to home page
+function redirectToHome() {
+    window.location.href = "index.html";
+}
+
+//get candidate data from local storage and render it on UI
+function getCandidate() {
     var candidate = JSON.parse(window.localStorage.getItem("candidate"));
     if (!candidate) {
-        window.location.href = "index.html";
+        redirectToHome();
+        return;
     }
     state.candidate = candidate;
     renderCandidate(state.candidate);
 }
 
+//init functions
 function initSetup() {
     $('.modal').modal();
 }
 
+//init
 (function () {
     initSetup();
-    getCandidates();
+    getCandidate();
     getReports();
 })();

@@ -1,8 +1,9 @@
 'use strict';
 
 var endpoint = "http://localhost:3333/api/";
-var state = [];
+var state = {};
 
+//ajax get request
 function getRequest(query, dataHandler, errorHandler) {
     var url = endpoint + query;
     fetch(url)
@@ -17,14 +18,15 @@ function getRequest(query, dataHandler, errorHandler) {
         });
 }
 
+//render error on UI
 function UIerrorHandler(msg) {
     var errorEl = document.createElement("h3");
     errorEl.innerHTML = msg;
     document.querySelector("#app .container .row").appendChild(errorEl);
 }
 
+//render candidates on UI
 function renderCandidates(candidates) {
-    console.table(candidates);
     document.querySelector("#app").innerHTML = "";
 
     var container = document.createElement("div");
@@ -57,26 +59,28 @@ function renderCandidates(candidates) {
         document.querySelector("#app .container .row").appendChild(output);
         attachEventListener(candidate.id);
     })
-    // particles();
 }
 
+//fetch candidates from server
 function getCandidates() {
     getRequest("candidates", function (data) {
-        state = JSON.parse(JSON.stringify(data));
-        renderCandidates(state);
+        state.candidates = [...data];
+        renderCandidates(state.candidates);
     }, function () {
         UIerrorHandler("Houston, we've got a problem!");
     });
 }
 
+//add event listeners on canidate elements
 function attachEventListener(id) {
     var card = document.querySelector(`[data-id="${id}"]`);
     card.addEventListener("click", function () {
         var id = parseFloat(this.getAttribute("data-id"));
         var candidate;
-        for (var key in state) {
-            if (state[key].id === id) {
-                candidate = JSON.stringify(state[key]);
+        var candidates = state.candidates;
+        for (var i in candidates) {
+            if (candidates[i].id === id) {
+                candidate = JSON.stringify(candidates[i]);
             }
         }
         localStorage.setItem("candidate", candidate);
@@ -84,33 +88,23 @@ function attachEventListener(id) {
     });
 }
 
-function setupEventListeners() {
+//add event listener on search element
+function addSearchEventListener() {
     var searchInput = document.getElementById("search");
     searchInput.addEventListener("keyup", liveSearch);
 }
 
+//live search function
 function liveSearch(e) {
-    console.log(e.target.value);
     var query = e.target.value.toLowerCase();
-    var arr = state.filter(function (candidate) {
+    var arr = state.candidates.filter(function (candidate) {
         return candidate.name.toLowerCase().includes(query);
     });
     renderCandidates(arr);
 }
-// function particles() {
-//     if (!document.querySelector('#particles canvas')) {
-//         particleground(document.getElementById('particles'), {
-//             dotColor: '#1a237e',
-//             lineColor: '#283593',
-//             particleRadius: 6,
-//             curveLines: true,
-//             density: 9000,
-//             proximity: 100
-//         });
-//     }
-// }
 
+//init
 (function () {
     getCandidates();
-    setupEventListeners();
+    addSearchEventListener();
 })();

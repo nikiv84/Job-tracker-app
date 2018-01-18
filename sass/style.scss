@@ -3,6 +3,7 @@
 @import "nav";
 
 $break-large: 992px;
+$break-xlarge: 1200px;
 
 body {
     font-family: 'Rubik', sans-serif;
@@ -11,6 +12,10 @@ body {
     width: 100%;
     min-height: 100vh;
     position: relative;
+}
+
+.wrapper {
+    min-height: calc(100vh - 170px);
 }
 
 .m-align {
@@ -220,12 +225,22 @@ table {
         }
     }
 
-    tr:nth-child(even):hover {
-        background-color: $primary-color;
-        color: #fff;
+    tbody {
+        tr:nth-child(odd) {
+            background-color: initial;
+            transition: all 0.2s ease-in-out;
 
-        i {
-            color: #fff;
+            &:hover {
+                background-color: $primary-color;
+                color: #fff;
+
+                i {
+                    color: #fff;
+                }
+            }
+        }
+        tr:nth-child(even) {
+            background-color: $secondary-color;
         }
     }
 }
@@ -251,9 +266,46 @@ table {
     }
 }
 
+footer {
+    .brand-logo {
+        font-size: 1.2rem;
+        letter-spacing: -0.1rem;
+    }
+
+    p {
+        height: 2rem;
+    }
+
+    &.page-footer {
+      height: 150px;
+      max-height: 150px;
+      overflow: hidden;
+    }
+
+    .brand-logo img {
+        margin-right: 1rem;
+        max-height: 32px;
+    }
+}
+
+.cand-info {
+    margin-top: 2rem;
+    small {
+        font-size: 95%;
+    }
+    h6 {
+        font-size: 1.1rem;
+    }
+}
+
 @media screen and (min-width: $break-large) {
     .cand-info {
-        margin-top: 2rem;
+        small {
+            font-size: 100%;
+        }
+        h6 {
+            font-size: 1.1rem;
+        }
     }
 
     .heading {
@@ -274,5 +326,13 @@ table {
             }
         }
     }
+}
 
+@media screen and (min-width: $break-xlarge) {
+    .cand-info {
+        margin-top: 5rem;
+        h6 {
+            font-size: 1.15rem;
+        }
+    }
 }

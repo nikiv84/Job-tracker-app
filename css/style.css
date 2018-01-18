@@ -7,6 +7,9 @@ body {
   min-height: 100vh;
   position: relative; }
 
+.wrapper {
+  min-height: calc(100vh - 170px); }
+
 .m-align {
   vertical-align: middle; }
 
@@ -155,11 +158,16 @@ table {
     transition: all 0.2s ease; }
     table i:hover {
       transform: scale(1.1); }
-  table tr:nth-child(even):hover {
-    background-color: #1a237e;
-    color: #fff; }
-    table tr:nth-child(even):hover i {
+  table tbody tr:nth-child(odd) {
+    background-color: initial;
+    transition: all 0.2s ease-in-out; }
+    table tbody tr:nth-child(odd):hover {
+      background-color: #1a237e;
       color: #fff; }
+      table tbody tr:nth-child(odd):hover i {
+        color: #fff; }
+  table tbody tr:nth-child(even) {
+    background-color: #e8eaf6; }
 
 .modal i {
   color: #1a237e; }
@@ -172,9 +180,31 @@ table {
   font-weight: 500;
   font-size: 1.15rem; }
 
+footer .brand-logo {
+  font-size: 1.2rem;
+  letter-spacing: -0.1rem; }
+footer p {
+  height: 2rem; }
+footer.page-footer {
+  height: 150px;
+  max-height: 150px;
+  overflow: hidden; }
+footer .brand-logo img {
+  margin-right: 1rem;
+  max-height: 32px; }
+
+.cand-info {
+  margin-top: 2rem; }
+  .cand-info small {
+    font-size: 95%; }
+  .cand-info h6 {
+    font-size: 1.1rem; }
+
 @media screen and (min-width: 992px) {
-  .cand-info {
-    margin-top: 2rem; }
+  .cand-info small {
+    font-size: 100%; }
+  .cand-info h6 {
+    font-size: 1.1rem; }
 
   .heading h3 {
     font-size: 2.2rem; }
@@ -183,5 +213,10 @@ table {
     font-size: 2.5rem; }
   .nav-wrapper a.brand-logo img {
     max-height: 40px; } }
+@media screen and (min-width: 1200px) {
+  .cand-info {
+    margin-top: 5rem; }
+    .cand-info h6 {
+      font-size: 1.15rem; } }
 
 /*# sourceMappingURL=style.css.map */
