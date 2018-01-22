@@ -1,5 +1,5 @@
 'use strict';
-
+(function () {
 var endpoint = "http://localhost:3333/api/";
 var state = {};
 
@@ -22,6 +22,14 @@ function getRequest(query, dataHandler, errorHandler) {
 function UIerrorHandler(msg) {
     var errorEl = document.createElement("h3");
     errorEl.innerHTML = msg;
+    var container = document.createElement("div");
+    container.classList.add("container");
+    document.querySelector("#app").appendChild(container);
+
+    var row = document.createElement("div");
+    row.classList.add("row");
+    document.querySelector("#app .container").appendChild(row);
+
     document.querySelector("#app .container .row").appendChild(errorEl);
 }
 
@@ -104,7 +112,7 @@ function liveSearch(e) {
 }
 
 //init
-(function () {
+
     getCandidates();
     addSearchEventListener();
 })();

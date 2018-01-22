@@ -1,5 +1,5 @@
 'use strict';
-
+(function ($) {
 var endpoint = "http://localhost:3333/api/";
 var state = {};
 var errTypes = {
@@ -255,8 +255,8 @@ function initSetup() {
 }
 
 //init
-(function () {
+
     initSetup();
     getCandidate();
     getReports();
-})();
+})(jQuery);
