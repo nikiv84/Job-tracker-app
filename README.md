@@ -1,6 +1,6 @@
-# BIT Certification: task 01
+# Job Tracker app
 
-A responsive web app for tracking job interviews and generating reports. Final project for [BIT](http://www.bgit.rs/)
+A responsive web app for tracking job interviews and viewing reports. Final project for [BIT](http://www.bgit.rs/)
 
 ![No more Tabs](/img/logo_text.png)
 
