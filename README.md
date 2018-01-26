@@ -7,7 +7,7 @@ A responsive web app for tracking job interviews and viewing reports. Final proj
 
 ## Stack
 
-HTLM5, CSS3, JS, jQuery, SASS.
+HTML5, CSS3, SASS, JS(ES5 & ES6), jQuery
 
 
 ## Authors
