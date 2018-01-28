@@ -10,10 +10,6 @@ A responsive web app for tracking job interviews and viewing reports. Final proj
 HTML5, CSS3, SASS, JS(ES5 & ES6), jQuery
 
 
-## Authors
+## Author
 
-* **Ivan Nikolic** - (https://github.com/nikiv84)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+* **Ivan Nikolic** - (https://github.com/nikiv84) - (http://www.nikolicivan.com)
