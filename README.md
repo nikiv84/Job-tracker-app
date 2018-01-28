@@ -4,7 +4,7 @@ A responsive web app for tracking job interviews and viewing reports. Final proj
 
 ![No more Tabs](/img/logo_text.png)
 
-DEMO : [Job Tracker](http://http://nikolicivan.com/job-tracker/) 
+DEMO : [Job Tracker](http://nikolicivan.com/job-tracker/) 
 
 ## Stack
 
