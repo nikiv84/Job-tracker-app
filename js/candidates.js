@@ -1,17 +1,16 @@
 'use strict';
 (function () {
-var endpoint = "http://localhost:3333/api/";
+var endpoint = "js/db.json";
 var state = {};
 
 //ajax get request
 function getRequest(query, dataHandler, errorHandler) {
-    var url = endpoint + query;
-    fetch(url)
+    fetch(endpoint)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            dataHandler(data);
+            dataHandler(data[query]);
         })
         .catch(function (error) {
             errorHandler(error);
@@ -112,7 +111,6 @@ function liveSearch(e) {
 }
 
 //init
-
     getCandidates();
     addSearchEventListener();
 })();

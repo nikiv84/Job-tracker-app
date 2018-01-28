@@ -1,6 +1,6 @@
 'use strict';
 (function ($) {
-var endpoint = "http://localhost:3333/api/";
+var endpoint = "js/db.json";
 var state = {};
 var errTypes = {
     warn: "warn",
@@ -9,15 +9,15 @@ var errTypes = {
 
 //ajax request
 function dataRequest(query, method, dataHandler, errorHandler) {
-    var url = endpoint + query;
+   
     var request = $.ajax({
-        url: url,
+        url: endpoint,
         method: method,
         dataType: 'json'
     });
 
     request.done(function (response) {
-        dataHandler(response);
+        dataHandler(response[query]);
     })
 
     request.fail(function (error) {
