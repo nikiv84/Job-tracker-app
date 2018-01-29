@@ -1,6 +1,6 @@
 'use strict';
 (function ($) {
-var endpoint = "js/db.json";
+var endpoint = "https://hr-app-json-server.herokuapp.com/api/";
 var state = {};
 var errTypes = {
     warn: "warn",
@@ -11,13 +11,13 @@ var errTypes = {
 function dataRequest(query, method, dataHandler, errorHandler) {
    
     var request = $.ajax({
-        url: endpoint,
+        url: endpoint + query,
         method: method,
         dataType: 'json'
     });
 
     request.done(function (response) {
-        dataHandler(response[query]);
+        dataHandler(response);
     })
 
     request.fail(function (error) {

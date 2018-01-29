@@ -1,16 +1,17 @@
 'use strict';
 (function () {
-var endpoint = "js/db.json";
+var endpoint = "https://hr-app-json-server.herokuapp.com/api/";
 var state = {};
 
 //ajax get request
 function getRequest(query, dataHandler, errorHandler) {
-    fetch(endpoint)
+    var url = endpoint + query
+    fetch(url)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            dataHandler(data[query]);
+            dataHandler(data);
         })
         .catch(function (error) {
             errorHandler(error);
